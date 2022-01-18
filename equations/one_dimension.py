@@ -41,7 +41,7 @@ def x_square_minus_one(nx=50):
 def electrical_circuit(nx=50):
     """
     x_prime = v_0/r - x/(r*c)
-    The flow always towards Q* no matter the initial conditions, it is a globally stable fixed point.
+    The flow goes always towards Q* no matter the initial conditions, it is a globally stable fixed point.
     :param nx:
     :return:
     """
@@ -51,5 +51,19 @@ def electrical_circuit(nx=50):
     c = 1
 
     x_prime = v_0/r - xv/(r*c)
+    y_prime = yv
+    return xv, yv, x_prime, y_prime
+
+
+def x_minus_cos_x(nx=50):
+    """
+    x_prime = x-cos(x)
+    The flow goes away of x*. It is the only fixed point and it is unstable.
+    :param nx:
+    :return:
+    """
+    xv, yv = mesh_creation(x_min=-0.75*np.pi, x_max=np.pi, nx=nx)
+
+    x_prime = xv - np.cos(xv)
     y_prime = yv
     return xv, yv, x_prime, y_prime
